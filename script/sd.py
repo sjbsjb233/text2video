@@ -54,7 +54,8 @@ def figure(path, text):
     # 循环检索任务,人名在上的优先
     for i in data:
         # 核对人名
-        if i[1] in text or i[2] in text or i[3] in text:
+        # 检测i[1],i[2],i[3]是否在text中(排除None数据)
+        if (i[1] and i[1] in text) or (i[2] and i[2] in text) or (i[3] and i[3] in text):
             # 如果人名在文本中
             prompt = "%s,%s" % (i[4], i[5])
             break
@@ -94,6 +95,45 @@ def sd_text2img(path, main_id):
     database.change_data(sql, (id, main_id), '%stemperature.db' % path)
 
     return True
+
+
+def sd_change_pic(path: str, main_id: int):
+    '''生成的图片不符合预期标准，重新生成'''
+    # 检查path是否加上/
+    if path[-1] != '/':
+        path += '/'
+
+    # 清除main表的pic_id,hire_fix_id
+    sql = '''UPDATE main SET pic_id=NULL,hire_fix_id=NULL WHERE id=?'''
+    database.change_data(sql, (main_id,), '%stemperature.db' % path)
+
+    # 重新生成
+    sd_text2img(path, main_id)
+
+
+def change_figure(path: str, data: tuple):
+    '''修改人物信息
+    data:(name1,name2,name3,lora,prompt,id)'''
+
+    # 检查path是否加上/
+    if path[-1] != '/':
+        path += '/'
+    # 修改figure表中的数据
+    sql = '''UPDATE figure SET name1=?,name2=?,name3=?,lora=?,prompt=? WHERE id=?'''
+    database.change_data(
+        sql, (data[0], data[1], data[2], data[3], data[4], data[5]), '%stemperature.db' % path)
+    return True
+
+
+def get_figure(path: str) -> list:
+    '''获取人物信息'''
+    # 检查path是否加上/
+    if path[-1] != '/':
+        path += '/'
+    # 获取figure表中的数据
+    sql = '''SELECT * FROM figure'''
+    data = database.select_data(sql, (), '%stemperature.db' % path)
+    return data
 
 
 def sd_confirm(path, main_id):
