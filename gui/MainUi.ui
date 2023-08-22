@@ -39,6 +39,9 @@
        </size>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>11</number>
+       </property>
        <property name="topMargin">
         <number>5</number>
        </property>
@@ -65,7 +68,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>930</width>
+           <width>982</width>
            <height>20</height>
           </size>
          </property>
@@ -73,15 +76,55 @@
        </item>
        <item>
         <widget class="QPushButton" name="pushButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>15</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{background:#6DDF6D;border-radius:5px;border:none}QPushButton:hover{background:green;}</string>
+         </property>
          <property name="text">
-          <string>-</string>
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="maximumSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{background:#F7D674;border-radius:5px;border:none}QPushButton:hover{background:yellow;}</string>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_3">
+         <property name="maximumSize">
+          <size>
+           <width>24</width>
+           <height>24</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{background:#F76677;border-radius:5px;border:none}QPushButton:hover{background:red;}</string>
+         </property>
          <property name="text">
-          <string>X</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -106,76 +149,6 @@
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item>
-        <widget class="QFrame" name="frame">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <property name="spacing">
-           <number>20</number>
-          </property>
-          <item>
-           <widget class="QPushButton" name="pushButton_2">
-            <property name="text">
-             <string>主页</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_4">
-            <property name="text">
-             <string>我的项目</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_5">
-            <property name="text">
-             <string>设置</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_6">
-            <property name="text">
-             <string>关于</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_7">
-            <property name="text">
-             <string>云计算</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="Line" name="line">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-        </widget>
-       </item>
        <item>
         <widget class="QTabWidget" name="tabWidget">
          <property name="tabPosition">
@@ -240,28 +213,25 @@
             </widget>
            </item>
            <item>
-            <widget class="QFrame" name="frame_3">
+            <widget class="QFrame" name="frame">
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
              </property>
              <property name="frameShadow">
               <enum>QFrame::Raised</enum>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <property name="spacing">
-               <number>3</number>
-              </property>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
               <property name="leftMargin">
-               <number>3</number>
+               <number>4</number>
               </property>
               <property name="topMargin">
-               <number>3</number>
+               <number>4</number>
               </property>
               <property name="rightMargin">
-               <number>3</number>
+               <number>4</number>
               </property>
               <property name="bottomMargin">
-               <number>3</number>
+               <number>4</number>
               </property>
               <item>
                <widget class="QScrollArea" name="scrollArea">
@@ -273,8 +243,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1058</width>
-                   <height>506</height>
+                   <width>1154</width>
+                   <height>504</height>
                   </rect>
                  </property>
                 </widget>
@@ -300,7 +270,7 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>1049</width>
+                <width>1147</width>
                 <height>990</height>
                </rect>
               </property>
@@ -335,7 +305,7 @@
                        </property>
                        <property name="sizeHint" stdset="0">
                         <size>
-                         <width>825</width>
+                         <width>923</width>
                          <height>20</height>
                         </size>
                        </property>
@@ -410,7 +380,7 @@
                        </property>
                        <property name="sizeHint" stdset="0">
                         <size>
-                         <width>725</width>
+                         <width>823</width>
                          <height>20</height>
                         </size>
                        </property>
@@ -446,7 +416,7 @@
                        </property>
                        <property name="sizeHint" stdset="0">
                         <size>
-                         <width>731</width>
+                         <width>829</width>
                          <height>20</height>
                         </size>
                        </property>
@@ -514,7 +484,7 @@
                        </property>
                        <property name="sizeHint" stdset="0">
                         <size>
-                         <width>659</width>
+                         <width>757</width>
                          <height>20</height>
                         </size>
                        </property>
@@ -552,7 +522,7 @@
                        </property>
                        <property name="sizeHint" stdset="0">
                         <size>
-                         <width>783</width>
+                         <width>881</width>
                          <height>20</height>
                         </size>
                        </property>
@@ -886,7 +856,7 @@
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>289</width>
+                  <width>322</width>
                   <height>20</height>
                  </size>
                 </property>
@@ -906,7 +876,7 @@
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>289</width>
+                  <width>321</width>
                   <height>20</height>
                  </size>
                 </property>
@@ -926,7 +896,7 @@
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>289</width>
+                  <width>322</width>
                   <height>20</height>
                  </size>
                 </property>
@@ -968,81 +938,6 @@
             <number>5</number>
            </property>
            <item>
-            <widget class="QFrame" name="frame_4">
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_5">
-              <property name="spacing">
-               <number>20</number>
-              </property>
-              <property name="leftMargin">
-               <number>5</number>
-              </property>
-              <property name="topMargin">
-               <number>5</number>
-              </property>
-              <property name="rightMargin">
-               <number>5</number>
-              </property>
-              <property name="bottomMargin">
-               <number>5</number>
-              </property>
-              <item>
-               <widget class="QPushButton" name="pushButton_10">
-                <property name="text">
-                 <string>主信息</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_11">
-                <property name="text">
-                 <string>1.切分镜</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_12">
-                <property name="text">
-                 <string>2.插图生成</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_13">
-                <property name="text">
-                 <string>3.配音生成</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_14">
-                <property name="text">
-                 <string>4.视频生成</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>343</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
             <widget class="QTabWidget" name="tabWidget_2">
              <property name="currentIndex">
               <number>0</number>
@@ -1076,7 +971,7 @@
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>676</width>
+                      <width>865</width>
                       <height>20</height>
                      </size>
                     </property>
@@ -1144,7 +1039,7 @@
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>535</width>
+                      <width>724</width>
                       <height>20</height>
                      </size>
                     </property>
@@ -1174,26 +1069,56 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QScrollArea" name="scrollArea_2">
+                   <widget class="QFrame" name="frame_4">
                     <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                       <horstretch>9</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
                     </property>
-                    <property name="widgetResizable">
-                     <bool>true</bool>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
                     </property>
-                    <widget class="QWidget" name="scrollAreaWidgetContents_2">
-                     <property name="geometry">
-                      <rect>
-                       <x>0</x>
-                       <y>0</y>
-                       <width>757</width>
-                       <height>416</height>
-                      </rect>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_5">
+                     <property name="leftMargin">
+                      <number>3</number>
                      </property>
-                    </widget>
+                     <property name="topMargin">
+                      <number>3</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>3</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>3</number>
+                     </property>
+                     <item>
+                      <widget class="QScrollArea" name="scrollArea_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                         <horstretch>9</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="widgetResizable">
+                        <bool>true</bool>
+                       </property>
+                       <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                        <property name="geometry">
+                         <rect>
+                          <x>0</x>
+                          <y>0</y>
+                          <width>904</width>
+                          <height>408</height>
+                         </rect>
+                        </property>
+                       </widget>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
                   </item>
                  </layout>
@@ -1226,7 +1151,7 @@
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>935</width>
+                        <width>1124</width>
                         <height>485</height>
                        </rect>
                       </property>
@@ -1250,7 +1175,7 @@
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>935</width>
+                        <width>1124</width>
                         <height>485</height>
                        </rect>
                       </property>
@@ -1311,7 +1236,7 @@
                             </property>
                             <property name="sizeHint" stdset="0">
                              <size>
-                              <width>694</width>
+                              <width>883</width>
                               <height>20</height>
                              </size>
                             </property>
@@ -1335,6 +1260,13 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;分镜内容于此显示或修改&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QProgressBar" name="progressBar_2">
+                         <property name="value">
+                          <number>0</number>
                          </property>
                         </widget>
                        </item>
@@ -1368,7 +1300,7 @@ p, li { white-space: pre-wrap; }
                             </property>
                             <property name="sizeHint" stdset="0">
                              <size>
-                              <width>238</width>
+                              <width>301</width>
                               <height>20</height>
                              </size>
                             </property>
@@ -1488,7 +1420,7 @@ p, li { white-space: pre-wrap; }
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>935</width>
+                        <width>1124</width>
                         <height>485</height>
                        </rect>
                       </property>
@@ -1512,7 +1444,7 @@ p, li { white-space: pre-wrap; }
                         </property>
                         <property name="sizeHint" stdset="0">
                          <size>
-                          <width>161</width>
+                          <width>208</width>
                           <height>20</height>
                          </size>
                         </property>
@@ -1539,7 +1471,7 @@ p, li { white-space: pre-wrap; }
                         </property>
                         <property name="sizeHint" stdset="0">
                          <size>
-                          <width>161</width>
+                          <width>209</width>
                           <height>20</height>
                          </size>
                         </property>
@@ -1566,7 +1498,7 @@ p, li { white-space: pre-wrap; }
                         </property>
                         <property name="sizeHint" stdset="0">
                          <size>
-                          <width>161</width>
+                          <width>208</width>
                           <height>20</height>
                          </size>
                         </property>
@@ -1586,7 +1518,7 @@ p, li { white-space: pre-wrap; }
                         </property>
                         <property name="sizeHint" stdset="0">
                          <size>
-                          <width>161</width>
+                          <width>208</width>
                           <height>20</height>
                          </size>
                         </property>
@@ -1643,7 +1575,7 @@ p, li { white-space: pre-wrap; }
                            </property>
                            <property name="sizeHint" stdset="0">
                             <size>
-                             <width>832</width>
+                             <width>1021</width>
                              <height>20</height>
                             </size>
                            </property>
@@ -1676,7 +1608,7 @@ p, li { white-space: pre-wrap; }
                            </property>
                            <property name="sizeHint" stdset="0">
                             <size>
-                             <width>820</width>
+                             <width>1009</width>
                              <height>20</height>
                             </size>
                            </property>
@@ -1702,7 +1634,7 @@ p, li { white-space: pre-wrap; }
                            </property>
                            <property name="sizeHint" stdset="0">
                             <size>
-                             <width>820</width>
+                             <width>1009</width>
                              <height>20</height>
                             </size>
                            </property>
@@ -1734,7 +1666,7 @@ p, li { white-space: pre-wrap; }
                            </property>
                            <property name="sizeHint" stdset="0">
                             <size>
-                             <width>241</width>
+                             <width>304</width>
                              <height>20</height>
                             </size>
                            </property>
@@ -1754,7 +1686,7 @@ p, li { white-space: pre-wrap; }
                            </property>
                            <property name="sizeHint" stdset="0">
                             <size>
-                             <width>242</width>
+                             <width>305</width>
                              <height>20</height>
                             </size>
                            </property>
@@ -1777,7 +1709,7 @@ p, li { white-space: pre-wrap; }
                            </property>
                            <property name="sizeHint" stdset="0">
                             <size>
-                             <width>241</width>
+                             <width>304</width>
                              <height>20</height>
                             </size>
                            </property>
@@ -1844,7 +1776,7 @@ p, li { white-space: pre-wrap; }
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>935</width>
+                        <width>1124</width>
                         <height>485</height>
                        </rect>
                       </property>
@@ -1977,7 +1909,7 @@ p, li { white-space: pre-wrap; }
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>450</width>
+                  <width>499</width>
                   <height>20</height>
                  </size>
                 </property>
@@ -2041,7 +1973,7 @@ p, li { white-space: pre-wrap; }
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>479</width>
+                  <width>528</width>
                   <height>20</height>
                  </size>
                 </property>
@@ -2061,7 +1993,7 @@ p, li { white-space: pre-wrap; }
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>478</width>
+                  <width>527</width>
                   <height>20</height>
                  </size>
                 </property>

@@ -8,3 +8,4 @@ test3.py
 临时文档.txt
 .vscode
 gui/__pycache__
+gui/UiScript/__pycache__

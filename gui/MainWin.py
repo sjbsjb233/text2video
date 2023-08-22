@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainUipJExYQ.ui'
+## Form generated from reading UI file 'MainUinXHKac.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -28,6 +28,7 @@ class Ui_MainWindow(object):
         self.widget.setObjectName(u"widget")
         self.widget.setMaximumSize(QSize(16777215, 35))
         self.horizontalLayout = QHBoxLayout(self.widget)
+        self.horizontalLayout.setSpacing(11)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(-1, 5, -1, 5)
         self.label = QLabel(self.widget)
@@ -39,17 +40,33 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.label)
 
-        self.horizontalSpacer = QSpacerItem(930, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(982, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
         self.pushButton = QPushButton(self.widget)
         self.pushButton.setObjectName(u"pushButton")
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(15)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
+        self.pushButton.setSizePolicy(sizePolicy)
+        self.pushButton.setMaximumSize(QSize(24, 24))
+        self.pushButton.setStyleSheet(u"QPushButton{background:#6DDF6D;border-radius:5px;border:none}QPushButton:hover{background:green;}")
 
         self.horizontalLayout.addWidget(self.pushButton)
 
+        self.pushButton_2 = QPushButton(self.widget)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setMaximumSize(QSize(24, 24))
+        self.pushButton_2.setStyleSheet(u"QPushButton{background:#F7D674;border-radius:5px;border:none}QPushButton:hover{background:yellow;}")
+
+        self.horizontalLayout.addWidget(self.pushButton_2)
+
         self.pushButton_3 = QPushButton(self.widget)
         self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButton_3.setMaximumSize(QSize(24, 24))
+        self.pushButton_3.setStyleSheet(u"QPushButton{background:#F76677;border-radius:5px;border:none}QPushButton:hover{background:red;}")
 
         self.horizontalLayout.addWidget(self.pushButton_3)
 
@@ -97,26 +114,25 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.frame_2)
 
-        self.frame_3 = QFrame(self.tab_2)
-        self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_3 = QVBoxLayout(self.frame_3)
-        self.verticalLayout_3.setSpacing(3)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(3, 3, 3, 3)
-        self.scrollArea = QScrollArea(self.frame_3)
+        self.frame = QFrame(self.tab_2)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_2 = QVBoxLayout(self.frame)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(4, 4, 4, 4)
+        self.scrollArea = QScrollArea(self.frame)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1156, 506))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1154, 509))
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
-        self.verticalLayout_3.addWidget(self.scrollArea)
+        self.verticalLayout_2.addWidget(self.scrollArea)
 
 
-        self.verticalLayout_4.addWidget(self.frame_3)
+        self.verticalLayout_4.addWidget(self.frame)
 
         self.tabWidget.addTab(self.tab_2, "")
         self.tab_3 = QWidget()
@@ -201,11 +217,11 @@ class Ui_MainWindow(object):
 
         self.lineEdit_5 = QLineEdit(self.widget_21)
         self.lineEdit_5.setObjectName(u"lineEdit_5")
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.lineEdit_5.sizePolicy().hasHeightForWidth())
-        self.lineEdit_5.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.lineEdit_5.sizePolicy().hasHeightForWidth())
+        self.lineEdit_5.setSizePolicy(sizePolicy1)
 
         self.horizontalLayout_32.addWidget(self.lineEdit_5)
 
@@ -227,8 +243,8 @@ class Ui_MainWindow(object):
 
         self.lineEdit_6 = QLineEdit(self.widget_22)
         self.lineEdit_6.setObjectName(u"lineEdit_6")
-        sizePolicy.setHeightForWidth(self.lineEdit_6.sizePolicy().hasHeightForWidth())
-        self.lineEdit_6.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.lineEdit_6.sizePolicy().hasHeightForWidth())
+        self.lineEdit_6.setSizePolicy(sizePolicy1)
 
         self.horizontalLayout_34.addWidget(self.lineEdit_6)
 
@@ -284,8 +300,8 @@ class Ui_MainWindow(object):
 
         self.lineEdit_9 = QLineEdit(self.widget_25)
         self.lineEdit_9.setObjectName(u"lineEdit_9")
-        sizePolicy.setHeightForWidth(self.lineEdit_9.sizePolicy().hasHeightForWidth())
-        self.lineEdit_9.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.lineEdit_9.sizePolicy().hasHeightForWidth())
+        self.lineEdit_9.setSizePolicy(sizePolicy1)
 
         self.horizontalLayout_37.addWidget(self.lineEdit_9)
 
@@ -393,8 +409,8 @@ class Ui_MainWindow(object):
 
         self.lineEdit_13 = QLineEdit(self.widget_32)
         self.lineEdit_13.setObjectName(u"lineEdit_13")
-        sizePolicy.setHeightForWidth(self.lineEdit_13.sizePolicy().hasHeightForWidth())
-        self.lineEdit_13.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.lineEdit_13.sizePolicy().hasHeightForWidth())
+        self.lineEdit_13.setSizePolicy(sizePolicy1)
 
         self.horizontalLayout_42.addWidget(self.lineEdit_13)
 
@@ -437,8 +453,8 @@ class Ui_MainWindow(object):
 
         self.lineEdit_15 = QLineEdit(self.widget_33)
         self.lineEdit_15.setObjectName(u"lineEdit_15")
-        sizePolicy.setHeightForWidth(self.lineEdit_15.sizePolicy().hasHeightForWidth())
-        self.lineEdit_15.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.lineEdit_15.sizePolicy().hasHeightForWidth())
+        self.lineEdit_15.setSizePolicy(sizePolicy1)
 
         self.horizontalLayout_44.addWidget(self.lineEdit_15)
 
@@ -460,8 +476,8 @@ class Ui_MainWindow(object):
 
         self.lineEdit_16 = QLineEdit(self.widget_34)
         self.lineEdit_16.setObjectName(u"lineEdit_16")
-        sizePolicy.setHeightForWidth(self.lineEdit_16.sizePolicy().hasHeightForWidth())
-        self.lineEdit_16.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.lineEdit_16.sizePolicy().hasHeightForWidth())
+        self.lineEdit_16.setSizePolicy(sizePolicy1)
 
         self.horizontalLayout_45.addWidget(self.lineEdit_16)
 
@@ -483,8 +499,8 @@ class Ui_MainWindow(object):
 
         self.lineEdit_17 = QLineEdit(self.widget_35)
         self.lineEdit_17.setObjectName(u"lineEdit_17")
-        sizePolicy.setHeightForWidth(self.lineEdit_17.sizePolicy().hasHeightForWidth())
-        self.lineEdit_17.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.lineEdit_17.sizePolicy().hasHeightForWidth())
+        self.lineEdit_17.setSizePolicy(sizePolicy1)
 
         self.horizontalLayout_46.addWidget(self.lineEdit_17)
 
@@ -539,8 +555,8 @@ class Ui_MainWindow(object):
 
         self.lineEdit_19 = QLineEdit(self.widget_38)
         self.lineEdit_19.setObjectName(u"lineEdit_19")
-        sizePolicy.setHeightForWidth(self.lineEdit_19.sizePolicy().hasHeightForWidth())
-        self.lineEdit_19.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.lineEdit_19.sizePolicy().hasHeightForWidth())
+        self.lineEdit_19.setSizePolicy(sizePolicy1)
 
         self.horizontalLayout_49.addWidget(self.lineEdit_19)
 
@@ -679,11 +695,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.listView = QListView(self.widget_5)
         self.listView.setObjectName(u"listView")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
-        sizePolicy1.setHorizontalStretch(2)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.listView.sizePolicy().hasHeightForWidth())
-        self.listView.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy2.setHorizontalStretch(2)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.listView.sizePolicy().hasHeightForWidth())
+        self.listView.setSizePolicy(sizePolicy2)
 
         self.horizontalLayout_7.addWidget(self.listView)
 
@@ -694,20 +710,35 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_7.addWidget(self.line_2)
 
-        self.scrollArea_2 = QScrollArea(self.widget_5)
+        self.frame_4 = QFrame(self.widget_5)
+        self.frame_4.setObjectName(u"frame_4")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(9)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
+        self.frame_4.setSizePolicy(sizePolicy3)
+        self.frame_4.setFrameShape(QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.frame_4)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(3, 3, 3, 3)
+        self.scrollArea_2 = QScrollArea(self.frame_4)
         self.scrollArea_2.setObjectName(u"scrollArea_2")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
-        sizePolicy2.setHorizontalStretch(9)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.scrollArea_2.sizePolicy().hasHeightForWidth())
-        self.scrollArea_2.setSizePolicy(sizePolicy2)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy4.setHorizontalStretch(9)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.scrollArea_2.sizePolicy().hasHeightForWidth())
+        self.scrollArea_2.setSizePolicy(sizePolicy4)
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 912, 416))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 904, 408))
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
 
-        self.horizontalLayout_7.addWidget(self.scrollArea_2)
+        self.verticalLayout_5.addWidget(self.scrollArea_2)
+
+
+        self.horizontalLayout_7.addWidget(self.frame_4)
 
 
         self.verticalLayout_6.addWidget(self.widget_5)
@@ -743,7 +774,7 @@ class Ui_MainWindow(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 935, 485))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 1124, 485))
         self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_4)
 
         self.horizontalLayout_18.addWidget(self.scrollArea_4)
@@ -779,7 +810,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_9.addWidget(self.label_8)
 
-        self.horizontalSpacer_5 = QSpacerItem(694, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_5 = QSpacerItem(883, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_9.addItem(self.horizontalSpacer_5)
 
@@ -796,6 +827,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addWidget(self.textEdit)
 
+        self.progressBar_2 = QProgressBar(self.tab_15)
+        self.progressBar_2.setObjectName(u"progressBar_2")
+        self.progressBar_2.setValue(0)
+
+        self.verticalLayout_8.addWidget(self.progressBar_2)
+
         self.widget_7 = QWidget(self.tab_15)
         self.widget_7.setObjectName(u"widget_7")
         self.horizontalLayout_10 = QHBoxLayout(self.widget_7)
@@ -809,7 +846,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_10.addWidget(self.pushButton_20)
 
-        self.horizontalSpacer_6 = QSpacerItem(238, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_6 = QSpacerItem(301, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_10.addItem(self.horizontalSpacer_6)
 
@@ -898,7 +935,7 @@ class Ui_MainWindow(object):
         self.widget_14.setObjectName(u"widget_14")
         self.horizontalLayout_21 = QHBoxLayout(self.widget_14)
         self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
-        self.horizontalSpacer_17 = QSpacerItem(161, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_17 = QSpacerItem(208, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_21.addItem(self.horizontalSpacer_17)
 
@@ -912,7 +949,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_21.addWidget(self.label_19)
 
-        self.horizontalSpacer_16 = QSpacerItem(161, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_16 = QSpacerItem(209, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_21.addItem(self.horizontalSpacer_16)
 
@@ -926,7 +963,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_21.addWidget(self.label_17)
 
-        self.horizontalSpacer_15 = QSpacerItem(161, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_15 = QSpacerItem(208, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_21.addItem(self.horizontalSpacer_15)
 
@@ -935,7 +972,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_21.addWidget(self.checkBox_2)
 
-        self.horizontalSpacer_14 = QSpacerItem(161, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_14 = QSpacerItem(208, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_21.addItem(self.horizontalSpacer_14)
 
@@ -964,7 +1001,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_23.addWidget(self.label_21)
 
-        self.horizontalSpacer_18 = QSpacerItem(832, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_18 = QSpacerItem(1021, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_23.addItem(self.horizontalSpacer_18)
 
@@ -985,7 +1022,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_22.addWidget(self.label_23)
 
-        self.horizontalSpacer_19 = QSpacerItem(820, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_19 = QSpacerItem(1009, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_22.addItem(self.horizontalSpacer_19)
 
@@ -1001,7 +1038,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_24.addWidget(self.label_24)
 
-        self.horizontalSpacer_20 = QSpacerItem(820, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_20 = QSpacerItem(1009, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_24.addItem(self.horizontalSpacer_20)
 
@@ -1010,11 +1047,11 @@ class Ui_MainWindow(object):
 
         self.label_25 = QLabel(self.frame_5)
         self.label_25.setObjectName(u"label_25")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.label_25.sizePolicy().hasHeightForWidth())
-        self.label_25.setSizePolicy(sizePolicy3)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.label_25.sizePolicy().hasHeightForWidth())
+        self.label_25.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_11.addWidget(self.label_25)
 
@@ -1022,7 +1059,7 @@ class Ui_MainWindow(object):
         self.widget_18.setObjectName(u"widget_18")
         self.horizontalLayout_25 = QHBoxLayout(self.widget_18)
         self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
-        self.horizontalSpacer_21 = QSpacerItem(241, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_21 = QSpacerItem(304, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_25.addItem(self.horizontalSpacer_21)
 
@@ -1031,7 +1068,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_25.addWidget(self.pushButton_25)
 
-        self.horizontalSpacer_22 = QSpacerItem(242, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_22 = QSpacerItem(305, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_25.addItem(self.horizontalSpacer_22)
 
@@ -1041,7 +1078,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_25.addWidget(self.pushButton_26)
 
-        self.horizontalSpacer_23 = QSpacerItem(241, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_23 = QSpacerItem(304, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_25.addItem(self.horizontalSpacer_23)
 
@@ -1161,11 +1198,11 @@ class Ui_MainWindow(object):
 
         self.pushButton_23 = QPushButton(self.widget_10)
         self.pushButton_23.setObjectName(u"pushButton_23")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.pushButton_23.sizePolicy().hasHeightForWidth())
-        self.pushButton_23.setSizePolicy(sizePolicy4)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.pushButton_23.sizePolicy().hasHeightForWidth())
+        self.pushButton_23.setSizePolicy(sizePolicy6)
 
         self.horizontalLayout_13.addWidget(self.pushButton_23)
 
@@ -1275,8 +1312,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Text2Img", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"-", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"X", None))
+        self.pushButton.setText("")
+        self.pushButton_2.setText("")
+        self.pushButton_3.setText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"\u4e3b\u9875", None))
         self.pushButton_8.setText(QCoreApplication.translate("MainWindow", u"\u521b\u5efa", None))
         self.pushButton_9.setText(QCoreApplication.translate("MainWindow", u"\u5220\u9664", None))
@@ -1373,6 +1411,3 @@ class Ui_MainWindow(object):
         self.pushButton_24.setText(QCoreApplication.translate("MainWindow", u"\u521b\u5efa", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_17), QCoreApplication.translate("MainWindow", u"\u521b\u5efa\u9879\u76ee(\u9690\u85cf)", None))
     # retranslateUi
-
-
-
