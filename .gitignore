@@ -7,3 +7,4 @@ test2.py
 test3.py
 临时文档.txt
 .vscode
+gui/__pycache__
