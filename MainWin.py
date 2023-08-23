@@ -330,11 +330,30 @@ class Ui_MainWindow(object):
         self.horizontalLayout_38.addWidget(self.label_34)
 
         self.comboBox = QComboBox(self.widget_26)
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
         self.comboBox.setObjectName(u"comboBox")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.comboBox.sizePolicy().hasHeightForWidth())
+        self.comboBox.setSizePolicy(sizePolicy2)
 
         self.horizontalLayout_38.addWidget(self.comboBox)
 
-        self.horizontalSpacer_28 = QSpacerItem(881, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_28 = QSpacerItem(473, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_38.addItem(self.horizontalSpacer_28)
 
@@ -683,9 +702,19 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.pushButton_19)
 
-        self.horizontalSpacer_4 = QSpacerItem(724, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_4 = QSpacerItem(562, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer_4)
+
+        self.pushButton_4 = QPushButton(self.widget_4)
+        self.pushButton_4.setObjectName(u"pushButton_4")
+
+        self.horizontalLayout_6.addWidget(self.pushButton_4)
+
+        self.pushButton_6 = QPushButton(self.widget_4)
+        self.pushButton_6.setObjectName(u"pushButton_6")
+
+        self.horizontalLayout_6.addWidget(self.pushButton_6)
 
 
         self.verticalLayout_6.addWidget(self.widget_4)
@@ -696,11 +725,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.listView = QListView(self.widget_5)
         self.listView.setObjectName(u"listView")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
-        sizePolicy2.setHorizontalStretch(2)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.listView.sizePolicy().hasHeightForWidth())
-        self.listView.setSizePolicy(sizePolicy2)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy3.setHorizontalStretch(2)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.listView.sizePolicy().hasHeightForWidth())
+        self.listView.setSizePolicy(sizePolicy3)
 
         self.horizontalLayout_7.addWidget(self.listView)
 
@@ -713,11 +742,11 @@ class Ui_MainWindow(object):
 
         self.frame_4 = QFrame(self.widget_5)
         self.frame_4.setObjectName(u"frame_4")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy3.setHorizontalStretch(9)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
-        self.frame_4.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy4.setHorizontalStretch(9)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
+        self.frame_4.setSizePolicy(sizePolicy4)
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.verticalLayout_5 = QVBoxLayout(self.frame_4)
@@ -725,11 +754,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setContentsMargins(3, 3, 3, 3)
         self.scrollArea_2 = QScrollArea(self.frame_4)
         self.scrollArea_2.setObjectName(u"scrollArea_2")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
-        sizePolicy4.setHorizontalStretch(9)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.scrollArea_2.sizePolicy().hasHeightForWidth())
-        self.scrollArea_2.setSizePolicy(sizePolicy4)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy5.setHorizontalStretch(9)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.scrollArea_2.sizePolicy().hasHeightForWidth())
+        self.scrollArea_2.setSizePolicy(sizePolicy5)
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
@@ -1048,11 +1077,11 @@ class Ui_MainWindow(object):
 
         self.label_25 = QLabel(self.frame_5)
         self.label_25.setObjectName(u"label_25")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.label_25.sizePolicy().hasHeightForWidth())
-        self.label_25.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.label_25.sizePolicy().hasHeightForWidth())
+        self.label_25.setSizePolicy(sizePolicy6)
 
         self.verticalLayout_11.addWidget(self.label_25)
 
@@ -1099,12 +1128,43 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 935, 485))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 1124, 485))
         self.scrollArea_6.setWidget(self.scrollAreaWidgetContents_6)
 
         self.horizontalLayout_26.addWidget(self.scrollArea_6)
 
         self.tabWidget_5.addTab(self.tab_20, "")
+        self.tab_23 = QWidget()
+        self.tab_23.setObjectName(u"tab_23")
+        self.verticalLayout_19 = QVBoxLayout(self.tab_23)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.widget_39 = QWidget(self.tab_23)
+        self.widget_39.setObjectName(u"widget_39")
+        self.horizontalLayout_50 = QHBoxLayout(self.widget_39)
+        self.horizontalLayout_50.setObjectName(u"horizontalLayout_50")
+        self.pushButton_5 = QPushButton(self.widget_39)
+        self.pushButton_5.setObjectName(u"pushButton_5")
+
+        self.horizontalLayout_50.addWidget(self.pushButton_5)
+
+        self.horizontalSpacer_39 = QSpacerItem(1024, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_50.addItem(self.horizontalSpacer_39)
+
+
+        self.verticalLayout_19.addWidget(self.widget_39)
+
+        self.scrollArea_10 = QScrollArea(self.tab_23)
+        self.scrollArea_10.setObjectName(u"scrollArea_10")
+        self.scrollArea_10.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_10 = QWidget()
+        self.scrollAreaWidgetContents_10.setObjectName(u"scrollAreaWidgetContents_10")
+        self.scrollAreaWidgetContents_10.setGeometry(QRect(0, 0, 1124, 438))
+        self.scrollArea_10.setWidget(self.scrollAreaWidgetContents_10)
+
+        self.verticalLayout_19.addWidget(self.scrollArea_10)
+
+        self.tabWidget_5.addTab(self.tab_23, "")
 
         self.horizontalLayout_19.addWidget(self.tabWidget_5)
 
@@ -1199,11 +1259,11 @@ class Ui_MainWindow(object):
 
         self.pushButton_23 = QPushButton(self.widget_10)
         self.pushButton_23.setObjectName(u"pushButton_23")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
-        sizePolicy6.setHorizontalStretch(0)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.pushButton_23.sizePolicy().hasHeightForWidth())
-        self.pushButton_23.setSizePolicy(sizePolicy6)
+        sizePolicy7 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
+        sizePolicy7.setHorizontalStretch(0)
+        sizePolicy7.setVerticalStretch(0)
+        sizePolicy7.setHeightForWidth(self.pushButton_23.sizePolicy().hasHeightForWidth())
+        self.pushButton_23.setSizePolicy(sizePolicy7)
 
         self.horizontalLayout_13.addWidget(self.pushButton_23)
 
@@ -1299,7 +1359,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.tabWidget_2.setCurrentIndex(0)
         self.tabWidget_3.setCurrentIndex(0)
         self.tabWidget_4.setCurrentIndex(0)
@@ -1334,6 +1394,21 @@ class Ui_MainWindow(object):
         self.label_33.setText(QCoreApplication.translate("MainWindow", u"\u8c03\u7528ChatGPT API\u82b1\u8d39\u7684\u6700\u5927Token:", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"Edge-tts(\u914d\u97f3\u751f\u6210)", None))
         self.label_34.setText(QCoreApplication.translate("MainWindow", u"Edge-tts\u914d\u97f3\u4e3b\u64ad\u9009\u62e9:", None))
+        self.comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"zh-CN-YunxiNeural", None))
+        self.comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"zh-CN-XiaoxiaoNeural", None))
+        self.comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"zh-CN-XiaoyiNeural", None))
+        self.comboBox.setItemText(3, QCoreApplication.translate("MainWindow", u"zh-CN-YunjianNeural", None))
+        self.comboBox.setItemText(4, QCoreApplication.translate("MainWindow", u"zh-CN-YunxiaNeural", None))
+        self.comboBox.setItemText(5, QCoreApplication.translate("MainWindow", u"zh-CN-YunyangNeural", None))
+        self.comboBox.setItemText(6, QCoreApplication.translate("MainWindow", u"zh-CN-liaoning-XiaobeiNeural", None))
+        self.comboBox.setItemText(7, QCoreApplication.translate("MainWindow", u"zh-CN-shaanxi-XiaoniNeural", None))
+        self.comboBox.setItemText(8, QCoreApplication.translate("MainWindow", u"zh-HK-HiuGaaiNeural", None))
+        self.comboBox.setItemText(9, QCoreApplication.translate("MainWindow", u"zh-HK-HiuMaanNeural", None))
+        self.comboBox.setItemText(10, QCoreApplication.translate("MainWindow", u"zh-HK-WanLungNeural", None))
+        self.comboBox.setItemText(11, QCoreApplication.translate("MainWindow", u"zh-TW-HsiaoChenNeural", None))
+        self.comboBox.setItemText(12, QCoreApplication.translate("MainWindow", u"zh-TW-HsiaoYuNeural", None))
+        self.comboBox.setItemText(13, QCoreApplication.translate("MainWindow", u"zh-TW-YunJheNeural", None))
+
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"Stable Diffusion(\u63d2\u56fe\u751f\u6210/\u9ad8\u6e05\u4fee\u590d)", None))
         self.label_35.setText(QCoreApplication.translate("MainWindow", u"Stable Diffusion\u56fa\u5b9a\u6b63\u5411Prompt:", None))
         self.label_36.setText(QCoreApplication.translate("MainWindow", u"Stable Diffusion\u56fa\u5b9a\u53cd\u5411Prompt:", None))
@@ -1360,6 +1435,8 @@ class Ui_MainWindow(object):
         self.pushButton_17.setText(QCoreApplication.translate("MainWindow", u"\u6682\u505c\u6240\u6709", None))
         self.pushButton_18.setText(QCoreApplication.translate("MainWindow", u"\u7ee7\u7eed\u6240\u6709", None))
         self.pushButton_19.setText(QCoreApplication.translate("MainWindow", u"\u91cd\u547d\u540d", None))
+        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"\u4eba\u7269\u56fa\u5b9a", None))
+        self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"\u63d2\u56fe\u5ba1\u6838", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"\u4e3b\u4fe1\u606f", None))
         self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab_12), QCoreApplication.translate("MainWindow", u"\u672a\u5b8c\u6210", None))
         self.tabWidget_3.setTabText(self.tabWidget_3.indexOf(self.tab_13), QCoreApplication.translate("MainWindow", u"\u5df2\u5b8c\u6210", None))
@@ -1396,6 +1473,8 @@ class Ui_MainWindow(object):
         self.pushButton_26.setText(QCoreApplication.translate("MainWindow", u"\u4e0d\u901a\u8fc7(F)", None))
         self.tabWidget_5.setTabText(self.tabWidget_5.indexOf(self.tab_19), QCoreApplication.translate("MainWindow", u"\u5f85\u5ba1\u6838", None))
         self.tabWidget_5.setTabText(self.tabWidget_5.indexOf(self.tab_20), QCoreApplication.translate("MainWindow", u"\u5df2\u5b8c\u6210", None))
+        self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"\u6dfb\u52a0", None))
+        self.tabWidget_5.setTabText(self.tabWidget_5.indexOf(self.tab_23), QCoreApplication.translate("MainWindow", u"\u4eba\u7269\u56fa\u5b9a", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_9), QCoreApplication.translate("MainWindow", u"\u63d2\u56fe\u751f\u6210", None))
         self.tabWidget_6.setTabText(self.tabWidget_6.indexOf(self.tab_21), QCoreApplication.translate("MainWindow", u"\u672a\u5b8c\u6210", None))
         self.tabWidget_6.setTabText(self.tabWidget_6.indexOf(self.tab_22), QCoreApplication.translate("MainWindow", u"\u5df2\u5b8c\u6210", None))

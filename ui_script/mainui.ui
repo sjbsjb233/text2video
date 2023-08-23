@@ -158,7 +158,7 @@
           <enum>QTabWidget::Rounded</enum>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>0</number>
          </property>
          <property name="elideMode">
           <enum>Qt::ElideNone</enum>
@@ -514,7 +514,84 @@
                       </widget>
                      </item>
                      <item>
-                      <widget class="QComboBox" name="comboBox"/>
+                      <widget class="QComboBox" name="comboBox">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>zh-CN-YunxiNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-CN-XiaoxiaoNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-CN-XiaoyiNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-CN-YunjianNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-CN-YunxiaNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-CN-YunyangNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-CN-liaoning-XiaobeiNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-CN-shaanxi-XiaoniNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-HK-HiuGaaiNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-HK-HiuMaanNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-HK-WanLungNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-TW-HsiaoChenNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-TW-HsiaoYuNeural</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>zh-TW-YunJheNeural</string>
+                        </property>
+                       </item>
+                      </widget>
                      </item>
                      <item>
                       <spacer name="horizontalSpacer_28">
@@ -523,7 +600,7 @@
                        </property>
                        <property name="sizeHint" stdset="0">
                         <size>
-                         <width>881</width>
+                         <width>473</width>
                          <height>20</height>
                         </size>
                        </property>
@@ -941,7 +1018,7 @@
            <item>
             <widget class="QTabWidget" name="tabWidget_2">
              <property name="currentIndex">
-              <number>2</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="tab_7">
               <attribute name="title">
@@ -1034,6 +1111,19 @@
                    </widget>
                   </item>
                   <item>
+                   <spacer name="horizontalSpacer_4">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>562</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
                    <widget class="QPushButton" name="pushButton_4">
                     <property name="text">
                      <string>人物固定</string>
@@ -1041,17 +1131,11 @@
                    </widget>
                   </item>
                   <item>
-                   <spacer name="horizontalSpacer_4">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
+                   <widget class="QPushButton" name="pushButton_6">
+                    <property name="text">
+                     <string>插图审核</string>
                     </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>643</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
+                   </widget>
                   </item>
                  </layout>
                 </widget>
@@ -1411,7 +1495,7 @@ p, li { white-space: pre-wrap; }
                <item>
                 <widget class="QTabWidget" name="tabWidget_5">
                  <property name="currentIndex">
-                  <number>3</number>
+                  <number>0</number>
                  </property>
                  <widget class="QWidget" name="tab_18">
                   <attribute name="title">
@@ -1759,6 +1843,51 @@ p, li { white-space: pre-wrap; }
                   <attribute name="title">
                    <string>人物固定</string>
                   </attribute>
+                  <layout class="QVBoxLayout" name="verticalLayout_19">
+                   <item>
+                    <widget class="QWidget" name="widget_39" native="true">
+                     <layout class="QHBoxLayout" name="horizontalLayout_50">
+                      <item>
+                       <widget class="QPushButton" name="pushButton_5">
+                        <property name="text">
+                         <string>添加</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_39">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>1024</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QScrollArea" name="scrollArea_10">
+                     <property name="widgetResizable">
+                      <bool>true</bool>
+                     </property>
+                     <widget class="QWidget" name="scrollAreaWidgetContents_10">
+                      <property name="geometry">
+                       <rect>
+                        <x>0</x>
+                        <y>0</y>
+                        <width>1124</width>
+                        <height>438</height>
+                       </rect>
+                      </property>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
                  </widget>
                 </widget>
                </item>

@@ -30,6 +30,10 @@ def init_mainwin(self):
     #tab_widget切换时触发
     self.tabWidget.currentChanged.connect(lambda: tab_widget_change(self))
 
+    #重写comboBox鼠标滚轮事件
+    self.comboBox.wheelEvent = lambda _: None
+
+
 def tab_widget_change(self):
     #获取当前tab_widget的index
     index = self.tabWidget.currentIndex()
@@ -64,7 +68,6 @@ def create_new_project(self):
 
 def clear_create_new_project(self):
     '''清空创建新项目界面'''
-    print('清空创建新项目界面')
     self.lineEdit.setText('')
     self.lineEdit_2.setText('')
     self.checkBox.setChecked(False)

@@ -146,7 +146,6 @@ def insert_dominate(name: str, cut_novel: bool, cut_re: str, novel_path: str, pr
         present.setValue(100)
         conn.commit()
         conn.close()
-    print('小说内容写入完成')
 
 def get_dominate():
     '''获取dominate表中的所有数据'''
