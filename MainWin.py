@@ -12,7 +12,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -126,7 +125,9 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1154, 509))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1154, 504))
+        self.verticalLayout_3 = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
         self.verticalLayout_2.addWidget(self.scrollArea)
@@ -1298,7 +1299,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         self.tabWidget_2.setCurrentIndex(0)
         self.tabWidget_3.setCurrentIndex(0)
         self.tabWidget_4.setCurrentIndex(0)
@@ -1411,3 +1412,4 @@ class Ui_MainWindow(object):
         self.pushButton_24.setText(QCoreApplication.translate("MainWindow", u"\u521b\u5efa", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_17), QCoreApplication.translate("MainWindow", u"\u521b\u5efa\u9879\u76ee(\u9690\u85cf)", None))
     # retranslateUi
+

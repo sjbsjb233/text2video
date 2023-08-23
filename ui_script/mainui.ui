@@ -158,7 +158,7 @@
           <enum>QTabWidget::Rounded</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>5</number>
          </property>
          <property name="elideMode">
           <enum>Qt::ElideNone</enum>
@@ -247,6 +247,7 @@
                    <height>504</height>
                   </rect>
                  </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_3"/>
                 </widget>
                </widget>
               </item>
@@ -940,7 +941,7 @@
            <item>
             <widget class="QTabWidget" name="tabWidget_2">
              <property name="currentIndex">
-              <number>0</number>
+              <number>2</number>
              </property>
              <widget class="QWidget" name="tab_7">
               <attribute name="title">
@@ -1033,13 +1034,20 @@
                    </widget>
                   </item>
                   <item>
+                   <widget class="QPushButton" name="pushButton_4">
+                    <property name="text">
+                     <string>人物固定</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
                    <spacer name="horizontalSpacer_4">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>724</width>
+                      <width>643</width>
                       <height>20</height>
                      </size>
                     </property>
@@ -1403,7 +1411,7 @@ p, li { white-space: pre-wrap; }
                <item>
                 <widget class="QTabWidget" name="tabWidget_5">
                  <property name="currentIndex">
-                  <number>0</number>
+                  <number>3</number>
                  </property>
                  <widget class="QWidget" name="tab_18">
                   <attribute name="title">
@@ -1738,7 +1746,7 @@ p, li { white-space: pre-wrap; }
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>935</width>
+                        <width>1124</width>
                         <height>485</height>
                        </rect>
                       </property>
@@ -1746,6 +1754,11 @@ p, li { white-space: pre-wrap; }
                     </widget>
                    </item>
                   </layout>
+                 </widget>
+                 <widget class="QWidget" name="tab_23">
+                  <attribute name="title">
+                   <string>人物固定</string>
+                  </attribute>
                  </widget>
                 </widget>
                </item>
