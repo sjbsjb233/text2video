@@ -5,7 +5,46 @@ from PyQt5.QtWidgets import *
 from script import init
 
 
+def view_my_program(mainwin: object):
+    '''查看我的项目'''
+    # 清空verticalLayout_3中的所有控件
+    for i in range(mainwin.verticalLayout_3.count()):
+        mainwin.verticalLayout_3.itemAt(i).widget().deleteLater()
+
+    # 获取dominate表中的所有数据
+    data = init.get_dominate()
+    for i in data:
+        # 创建一个My_program对象
+        my_program = My_program(i[0], i[1], mainwin)
+        # 将my_program添加到mainwin中
+        mainwin.verticalLayout_3.addWidget(my_program)
+        mainwin.program_list.append(my_program)
+
+
+def my_one_program(mainwin: object, dominate_id: int):
+    '''点击我的项目中的操作按钮后触发显示我的项目具体的一个'''
+    tab = mainwin.my_one_program.get(dominate_id)
+    if tab:
+        # 如果tab存在
+        mainwin.tabWidget.setCurrentWidget(tab)
+        return
+    # 如果tab不存在
+    # 创建一个tab
+    new_tab = My_one_program(mainwin, dominate_id)
+    # 将tab添加到tabWidget中
+    mainwin.tabWidget.addTab(new_tab.tab_6, "")
+    # 获取new_tab的index
+    index = mainwin.tabWidget.indexOf(new_tab.tab_6)
+    # 隐藏当前的new_tab
+    mainwin.tabWidget.setTabVisible(index, False)
+    # tabWidget切换到new_tab
+    mainwin.tabWidget.setCurrentWidget(new_tab.tab_6)
+    # 初始化new_tab
+
+
 class My_program(QFrame):
+    '''我的项目操作条子'''
+
     def __init__(self, dominate_id: int, name: str, mainwin: object, parent=None):
         super(My_program, self).__init__(parent)
 
@@ -46,43 +85,6 @@ class My_program(QFrame):
         self.dominat_id = dominate_id  # 项目的dominate_id
 
 
-def view_my_program(mainwin: object):
-    '''查看我的项目'''
-    # 清空verticalLayout_3中的所有控件
-    for i in range(mainwin.verticalLayout_3.count()):
-        mainwin.verticalLayout_3.itemAt(i).widget().deleteLater()
-
-    # 获取dominate表中的所有数据
-    data = init.get_dominate()
-    for i in data:
-        # 创建一个My_program对象
-        my_program = My_program(i[0], i[1], mainwin)
-        # 将my_program添加到mainwin中
-        mainwin.verticalLayout_3.addWidget(my_program)
-        mainwin.program_list.append(my_program)
-
-
-def my_one_program(mainwin: object, dominate_id: int):
-    '''点击我的项目中的操作按钮后触发显示我的项目具体的一个'''
-    tab = mainwin.my_one_program.get(dominate_id)
-    if tab:
-        # 如果tab存在
-        mainwin.tabWidget.setCurrentWidget(tab)
-        return
-    # 如果tab不存在
-    # 创建一个tab
-    new_tab = My_one_program(mainwin, dominate_id)
-    # 将tab添加到tabWidget中
-    mainwin.tabWidget.addTab(new_tab.tab_6, "")
-    # 获取new_tab的index
-    index = mainwin.tabWidget.indexOf(new_tab.tab_6)
-    # 隐藏当前的new_tab
-    mainwin.tabWidget.setTabVisible(index, False)
-    # tabWidget切换到new_tab
-    mainwin.tabWidget.setCurrentWidget(new_tab.tab_6)
-    # 初始化new_tab
-
-
 class My_one_program():
     def init_new_tab(self):
         '''初始化new_tab,附加内容'''
@@ -92,6 +94,8 @@ class My_one_program():
         # 主信息页面
         # 获取dominate表中的指定id数据
         data = init.get_program_info(self.dominate_id)
+        self.path = data[5]  # 项目路径
+
         # 显示项目名称
         self.label_3.setText(data[1])
         # 显示花费的tokens
@@ -107,6 +111,27 @@ class My_one_program():
         self.pushButton_4.clicked.connect(self.loro_figure)
         # 插图审核按钮事件
         self.pushButton_6.clicked.connect(self.pic_review)
+
+    def load_part_info(self):
+        '''加载主信息--分镜信息内容'''
+        # 获取章节数量
+        chapter_num = init.get_chapter_num(self.path)
+        # 向listView中添加item
+        chapter = []
+        for i in range(chapter_num):
+            chapter.append('第%s章' % str(i+1))
+        slm = QStringListModel()
+        slm.setStringList(chapter)
+        self.listView.setModel(slm)
+        # 设置listView的点击事件
+        # ???
+
+        part_list = init.get_part_list(self.path)
+        for i in part_list:
+            state, persent = init.get_state(self.path, i[0])
+            self.part[(i[1], i[2])] = Part_info(self.mainwin, self, i[1], i[2])
+            self.part[(i[1], i[2])].label_4.setText(state)
+            self.part[(i[1], i[2])].progressBar.setValue(persent)
 
     def loro_figure(self):
         '''人物固定按钮点击事件'''
@@ -148,7 +173,7 @@ class My_one_program():
         init.delete_program_dir(self.dominate_id)
 
     def refresh(self):
-        '''实时刷新的内容'''
+        '''实时刷新的内容(多项条列)'''
         # 累计消耗的tokens
         data = init.get_program_info(self.dominate_id)
         self.label_5.setText(str(data[3]))
@@ -936,3 +961,65 @@ class My_one_program():
             self.tab_25), QCoreApplication.translate("MainWindow", u"\u5df2\u5b8c\u6210", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(
             self.widget1), QCoreApplication.translate("MainWindow", u"\u89c6\u9891\u751f\u6210", None))
+
+
+class Part_info(QFrame):
+    '''主信息--分镜信息'''
+
+    def __init__(self, mainwin: object, my_one_program: object, chapter: int, part: int):
+        super().__init__()
+        self.chapter = chapter
+        self.part = part
+        self.mainwin = mainwin
+        self.my_one_program = my_one_program
+
+        self.setObjectName(u"frame")
+        self.setMaximumSize(QSize(16777215, 212))
+        self.setFrameShape(QFrame.StyledPanel)
+        self.setFrameShadow(QFrame.Raised)
+        self.verticalLayout = QVBoxLayout(self)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.widget = QWidget(self)
+        self.widget.setObjectName(u"widget")
+        self.horizontalLayout = QHBoxLayout(self.widget)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.label = QLabel(self.widget)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout.addWidget(self.label)
+
+        self.label_2 = QLabel(self.widget)
+        self.label_2.setObjectName(u"label_2")
+
+        self.horizontalLayout.addWidget(self.label_2)
+
+        self.horizontalSpacer = QSpacerItem(
+            658, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.label_3 = QLabel(self.widget)
+        self.label_3.setObjectName(u"label_3")
+
+        self.horizontalLayout.addWidget(self.label_3)
+
+        self.label_4 = QLabel(self.widget)
+        self.label_4.setObjectName(u"label_4")
+
+        self.horizontalLayout.addWidget(self.label_4)
+
+        self.verticalLayout.addWidget(self.widget)
+
+        self.progressBar = QProgressBar(self.frame)
+        self.progressBar.setObjectName(u"progressBar")
+        self.progressBar.setValue(0)
+
+        self.verticalLayout.addWidget(self.progressBar)
+
+        self.label.setText(QCoreApplication.translate(
+            "Form", u"\u5206\u955c", None))
+        self.label_2.setText(QCoreApplication.translate(
+            "Form", str(self.part), None))
+        self.label_3.setText(QCoreApplication.translate(
+            "Form", u"\u6b63\u5728\u8fdb\u884c\uff1a", None))
+        self.label_4.setText(QCoreApplication.translate("Form", u"???", None))

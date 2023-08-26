@@ -200,10 +200,92 @@ def delete_program_dir(dominate_id):
     database.change_data('''DELETE FROM dominate WHERE id=?''',
                          (dominate_id,), r'data\database.db')
 
+
 def update_dominate_name(dominate_id, name):
     '''更新dominate表中的name'''
     database.change_data('''UPDATE dominate SET name=? WHERE id=?''',
                          (name, dominate_id), r'data\database.db')
+
+
+def get_chapter_num(path):
+    '''获取小说章节数量'''
+    # 判定path是否加上/
+    if path[-1] != '/':
+        path += '/'
+    sql = '''SELECT COUNT(*) FROM original_content'''
+    data = database.select_data(sql, (), '%stemperature.db' % path)
+    return data[0][0]
+
+
+def get_state(path, main_id):
+    '''获取指定main_id所有内容'''
+    # 判定path是否加上/
+    if path[-1] != '/':
+        path += '/'
+    sql = '''SELECT * FROM main WHERE id=?'''
+    data = database.select_data(sql, (main_id,), '%stemperature.db' % path)
+    state = '未开始'
+    persent = 0
+
+    sql_gpt = '''SELECT state FROM gpt_queue WHERE id=?'''
+    state_gpt = database.select_data(
+        sql_gpt, (data[0][4],), '%stemperature.db' % path)
+    if state_gpt:
+        if state_gpt[0][0] == 2:
+            state = 'ChatGPT生成Prompt排队中(插图生成)'
+            persent = 10
+        elif state_gpt[0][0] == 3:
+            state = 'ChatGPT生成Prompt处理中(插图生成)'
+            persent = 20
+    sql_pic = '''SELECT state FROM sd_queue WHERE id=?'''
+    state_pic = database.select_data(
+        sql_pic, (data[0][5],), '%stemperature.db' % path)
+    if state_pic:
+        if state_pic[0][0] == 2:
+            state = 'Stable Diffusion排队中(插图生成)'
+            persent = 30
+        elif state_pic[0][0] == 3:
+            state = 'Stable Diffusion处理中(插图生成)'
+            persent = 40
+
+    sql_tts = '''SELECT state FROM tts_queue WHERE id=?'''
+    state_tts = database.select_data(
+        sql_tts, (data[0][6],), '%stemperature.db' % path)
+    if state_tts:
+        if state_tts[0][0] == 2:
+            state = 'Edge-TTS排队中(配音生成)'
+            persent = 50
+        elif state_tts[0][0] == 3:
+            state = 'Edge-TTS处理中(配音生成)'
+            persent = 60
+
+    sql_fix = '''SELECT state FROM sd_queue WHERE id=?'''
+    state_fix = database.select_data(
+        sql_fix, (data[0][7],), '%stemperature.db' % path)
+    if state_fix:
+        if state_fix[0][0] == 2:
+            state = 'Stable Diffusion排队中(高清修复)'
+            persent = 70
+        elif state_fix[0][0] == 3:
+            state = 'Stable Diffusion处理中(高清修复)'
+            persent = 80
+        elif state_fix[0][0] == 4:
+            state = '已完成'
+            persent = 100
+    return state, persent
+
+
+def get_part_list(path):
+    '''获取part列表,用于生成主信息--分镜信息的内容'''
+    # 判定path是否加上/
+    if path[-1] != '/':
+        path += '/'
+    # 按chapter(主)和part(次)升序排序获取main表中的数据
+    sql = '''SELECT * FROM main ORDER BY chapter ASC,part ASC'''
+    data = database.select_data(sql, (), '%stemperature.db' % path)
+
+    return data
+
 
 if __name__ == '__main__':
     create_orginal_table(r'temp\novel')
