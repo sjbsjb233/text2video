@@ -13,9 +13,13 @@ class MainWin(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        #创建基础list
-        self.program_list = []
-        #加载基础窗口控件
+        # 创建基础list
+        self.program_list = []  # 我的项目的控件列表
+        self.my_one_program_list = []  # 我的一个项目的tab标签大控件列表
+        self.refresh_dict = {}  # 刷新控件的字典
+        self.my_one_program = {}  # 我的一个项目 对应的tabwidget标签对象
+        self.start_program = False  # 是否开始运行项目
+        # 加载基础窗口控件
         base.init_mainwin(self)
 
     def mousePressEvent(self, event):

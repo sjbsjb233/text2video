@@ -3,6 +3,7 @@ import sqlite3
 import os
 import datetime
 import re
+from script import database
 
 
 def create_orginal_table(path):
@@ -133,7 +134,7 @@ def insert_dominate(name: str, cut_novel: bool, cut_re: str, novel_path: str, pr
             c.execute('''INSERT INTO original_content(chapter,text) VALUES(?,?)''',
                       (i+1, novel[i]))
             # 计算进度
-            present.setValue(round( i/len(novel)*100 ))
+            present.setValue(round(i/len(novel)*100))
         present.setValue(100)
         conn.commit()
         conn.close()
@@ -147,15 +148,62 @@ def insert_dominate(name: str, cut_novel: bool, cut_re: str, novel_path: str, pr
         conn.commit()
         conn.close()
 
-def get_dominate():
-    '''获取dominate表中的所有数据'''
-    conn = sqlite3.connect("data/database.db")
-    c = conn.cursor()
-    c.execute('''SELECT * FROM dominate''')
-    data = c.fetchall()
-    conn.commit()
-    conn.close()
-    return data
+
+def get_dominate(id=-1):
+    '''获取dominate表中的数据'''
+    if id == -1:
+        conn = sqlite3.connect("data/database.db")
+        c = conn.cursor()
+        c.execute('''SELECT * FROM dominate''')
+        data = c.fetchall()
+        conn.commit()
+        conn.close()
+        return data
+    else:
+        conn = sqlite3.connect("data/database.db")
+        c = conn.cursor()
+        c.execute('''SELECT * FROM dominate WHERE id=?''', (id,))
+        data = c.fetchall()
+        conn.commit()
+        conn.close()
+        return data
+
+
+def if_project_name_exist(name):
+    '''判定项目名称是否已存在'''
+    data = database.select_data(
+        '''SELECT * FROM dominate WHERE name=?''', (name,), r'data\database.db')
+    flag = False
+    for i in data:
+        if i[1] == name:
+            flag = True
+            break
+    return flag
+
+
+def get_program_info(dominate_id):
+    '''获取指定项目的信息'''
+    data = database.select_data(
+        '''SELECT * FROM dominate WHERE id=?''', (dominate_id,), r'data\database.db')
+    return data[0]
+
+
+def delete_program_dir(dominate_id):
+    '''删除指定项目'''
+    # 删除项目文件夹
+    path = get_program_info(dominate_id)[-1]+'/'
+    os.remove(path+'temperature.db')
+    os.rmdir(path+'sound')
+    os.rmdir(path+'pic')
+    os.rmdir(path)
+    # dominate表中删除该行数据
+    database.change_data('''DELETE FROM dominate WHERE id=?''',
+                         (dominate_id,), r'data\database.db')
+
+def update_dominate_name(dominate_id, name):
+    '''更新dominate表中的name'''
+    database.change_data('''UPDATE dominate SET name=? WHERE id=?''',
+                         (name, dominate_id), r'data\database.db')
 
 if __name__ == '__main__':
     create_orginal_table(r'temp\novel')
