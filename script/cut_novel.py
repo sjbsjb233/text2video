@@ -90,7 +90,7 @@ def cut_novel_human(text: str, path: str, chapter: int):
             sql, (chapter, chapter_part, chapter_content), '%stemperature.db' % path)
 
 
-def gpt_split(path: str, chapters: list,persent: object):
+def gpt_split(path: str, chapters: list, persent: object, textEdit: object):
     '''ChatGPT分割文本,将任务加入gpt_queue表的队列中
     chapters:需要分割的章节列表'''
     # 检查path结尾是否为/
@@ -133,6 +133,7 @@ def gpt_split(path: str, chapters: list,persent: object):
 
         # 将content_list中的内容加入gpt_queue表的队列中，并获取该任务的id
         finally_result = []
+        count = 0  # 计数器(用于计算进度)
         for prompt in content_list:
             now_spend_tokens = chatgpt.num_tokens_from_string(
                 prompt, chatgpt_split_system)
@@ -169,9 +170,13 @@ def gpt_split(path: str, chapters: list,persent: object):
                     finally_result.append(completion["part"+str(i+1)])
                 break
             # 计算进度(不精准)
-            persent.setValue(round(len(finally_result)/(len(content_list)*2.5)*100))
-    persent.setValue(100)
+            count += 1
+            persent.setValue(round(count/len(content_list)*100))
 
+            #将内容预显示到textEdit中
+            textEdit.setPlainText("\n".join(finally_result))
+    persent.setValue(100)
+    textEdit.setPlainText("\n".join(finally_result))
     return finally_result
 
 

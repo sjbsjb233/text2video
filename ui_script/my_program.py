@@ -3,6 +3,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from script import init
+from script import cut_novel
 
 
 def view_my_program(mainwin: object):
@@ -99,6 +100,8 @@ class My_one_program():
         data = init.get_program_info(self.dominate_id)
         self.path = data[5]  # 项目路径
 
+        self.if_start_ai_screenshot = False  # 是否开始AI分镜
+
         # 显示项目名称
         self.label_3.setText(data[1])
         # 显示花费的tokens
@@ -123,6 +126,24 @@ class My_one_program():
         '''开始AI分镜按钮点击事件'''
         # 禁用按钮
         self.pushButton_20.setEnabled(False)
+        self.label_8.setText('AI分镜处理中(等待ChatGPT响应)')
+        # 多线程执行AI分镜
+        self.ai_screenshot_thread = QThread()
+        self.ai_screenshot_thread.run(lambda: cut_novel.gpt_split(
+            self.path, chapter, self.progressBar_2, self.textEdit))
+        self.ai_screenshot_thread.finished.connect(
+            self.ai_screenshot_thread_over)
+        self.ai_screenshot_thread.start()
+        self.if_start_ai_screenshot = True
+
+    def ai_screenshot_thread_over(self):
+        '''AI分镜线程结束后执行'''
+        # 启用按钮
+        self.pushButton_21.setEnabled(True)  # 提交按钮
+        # 更新状态
+        self.label_8.setText('AI分镜处理完成,请人工审核后点击提交按钮')
+
+        self.if_start_ai_screenshot = False
 
     def add_chapter(self):
         '''添加章节'''
@@ -1053,7 +1074,22 @@ class part_undone(QFrame):
         self.pushButton.clicked.connect(self.create_part)
 
     def create_part(self):
-        '''创建分镜'''
+        '''创建分镜,开始按钮点击事件'''
+        #确认AI分镜是否启动
+        if self.my_one_program.if_ai_screenshot:
+            # 将页面切换到index=2
+            self.my_one_program.tabWidget_3.setCurrentIndex(2)
+            QMessageBox.information(self, '提示', 'AI智能分镜已经在运行中,请等待上个AI智能分镜结束后才能进行新的分镜任务', QMessageBox.Ok)
+            return
+        # 将页面切换到index=2
+        self.my_one_program.tabWidget_3.setCurrentIndex(2)
+        # 设置AI分镜开始按钮点击事件
+        self.my_one_program.pushButton_20.clicked.connect(
+            lambda: self.my_one_program.start_ai_screenshot(self.chapter))
+
+        origin_text = init.get_original_content(self.my_one_program.path, self.chapter)
+        #人工分镜中显示原文内容
+        self.my_one_program.textEdit_2.setPlainText(origin_text)
 
     def __init__(self, mainwin: object, my_one_program: object, chapter: int):
         self.mainwin = mainwin

@@ -274,6 +274,14 @@ def get_part_list(path):
 
     return data
 
+def get_original_content(path, chapter):
+    '''获取指定章节的原始文本内容'''
+    # 判定path是否加上/
+    if path[-1] != '/':
+        path += '/'
+    sql = '''SELECT text FROM original_content WHERE chapter=?'''
+    data = database.select_data(sql, (chapter,), '%stemperature.db' % path)
+    return data[0][0]
 
 if __name__ == '__main__':
     create_orginal_table(r'temp\novel')
