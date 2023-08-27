@@ -39,7 +39,10 @@ def my_one_program(mainwin: object, dominate_id: int):
     mainwin.tabWidget.setTabVisible(index, False)
     # tabWidget切换到new_tab
     mainwin.tabWidget.setCurrentWidget(new_tab.tab_6)
+    # 将new_tab添加到my_one_program字典中
+    mainwin.my_one_program[dominate_id] = new_tab
     # 初始化new_tab
+    new_tab.init_new_tab()
 
 
 class My_program(QFrame):
@@ -103,6 +106,7 @@ class My_one_program():
         # 恢复按钮状态
         self.pushButton_17.setEnabled(True)
         self.pushButton_18.setEnabled(True)
+        self.pushButton_21.setEnabled(False)  # 切分镜--AI分镜--提交按钮
         # 删除项目按钮事件
         self.pushButton_15.clicked.connect(self.delete_program)
         # 重命名项目按钮事件
@@ -111,6 +115,22 @@ class My_one_program():
         self.pushButton_4.clicked.connect(self.loro_figure)
         # 插图审核按钮事件
         self.pushButton_6.clicked.connect(self.pic_review)
+
+        # 加载主信息--分镜信息内容
+        self.load_part_info()
+
+    def start_ai_screenshot(self, chapter):
+        '''开始AI分镜按钮点击事件'''
+        # 禁用按钮
+        self.pushButton_20.setEnabled(False)
+
+    def add_chapter(self):
+        '''添加章节'''
+        # 弹出对话框
+        text, ok = QInputDialog.getText(
+            self.tab_6, '添加章节', '请输入章节内容:')
+        if ok:
+            pass
 
     def load_part_info(self):
         '''加载主信息--分镜信息内容'''
@@ -974,7 +994,7 @@ class Part_info(QFrame):
         self.my_one_program = my_one_program
 
         self.setObjectName(u"frame")
-        self.setMaximumSize(QSize(16777215, 212))
+        self.setMaximumSize(QSize(16777215, 121))
         self.setFrameShape(QFrame.StyledPanel)
         self.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self)
@@ -1023,3 +1043,121 @@ class Part_info(QFrame):
         self.label_3.setText(QCoreApplication.translate(
             "Form", u"\u6b63\u5728\u8fdb\u884c\uff1a", None))
         self.label_4.setText(QCoreApplication.translate("Form", u"???", None))
+
+
+class part_undone(QFrame):
+    '''切分镜--未完成'''
+
+    def init_other(self):
+        '''初始化其他'''
+        self.pushButton.clicked.connect(self.create_part)
+
+    def create_part(self):
+        '''创建分镜'''
+
+    def __init__(self, mainwin: object, my_one_program: object, chapter: int):
+        self.mainwin = mainwin
+        self.my_one_program = my_one_program
+        self.chapter = chapter
+
+        super().__init__()
+        self.setObjectName(u"frame")
+        self.setMaximumSize(QSize(16777215, 81))
+        self.setFrameShape(QFrame.StyledPanel)
+        self.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.label = QLabel(self)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout.addWidget(self.label)
+
+        self.horizontalSpacer = QSpacerItem(
+            469, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.label_2 = QLabel(self)
+        self.label_2.setObjectName(u"label_2")
+
+        self.horizontalLayout.addWidget(self.label_2)
+
+        self.label_3 = QLabel(self)
+        self.label_3.setObjectName(u"label_3")
+
+        self.horizontalLayout.addWidget(self.label_3)
+
+        self.pushButton = QPushButton(self)
+        self.pushButton.setObjectName(u"pushButton")
+
+        self.horizontalLayout.addWidget(self.pushButton)
+
+        self.label.setText(QCoreApplication.translate(
+            "Form", u"\u7b2cN\u7ae0", None))
+        self.label_2.setText(QCoreApplication.translate("Form", u"???", None))
+        self.label_3.setText(
+            QCoreApplication.translate("Form", u"\u5b57", None))
+        self.pushButton.setText(QCoreApplication.translate(
+            "Form", u"\u5f00\u59cb", None))
+
+
+class part_done(QFrame):
+    '''切分镜--已完成'''
+
+    def __init__(self, mainwin: object, my_one_program: object, chapter: int):
+        self.mainwin = mainwin
+        self.my_one_program = my_one_program
+        self.chapter = chapter
+
+        super().__init__()
+        self.setObjectName(u"frame")
+        self.setMaximumSize(QSize(16777215, 81))
+        self.setFrameShape(QFrame.StyledPanel)
+        self.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout = QHBoxLayout(self)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.label = QLabel(self)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout.addWidget(self.label)
+
+        self.horizontalSpacer = QSpacerItem(
+            213, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.label_2 = QLabel(self)
+        self.label_2.setObjectName(u"label_2")
+
+        self.horizontalLayout.addWidget(self.label_2)
+
+        self.label_3 = QLabel(self)
+        self.label_3.setObjectName(u"label_3")
+
+        self.horizontalLayout.addWidget(self.label_3)
+
+        self.label_4 = QLabel(self)
+        self.label_4.setObjectName(u"label_4")
+
+        self.horizontalLayout.addWidget(self.label_4)
+
+        self.label_5 = QLabel(self)
+        self.label_5.setObjectName(u"label_5")
+
+        self.horizontalLayout.addWidget(self.label_5)
+
+        self.pushButton = QPushButton(self)
+        self.pushButton.setObjectName(u"pushButton")
+
+        self.horizontalLayout.addWidget(self.pushButton)
+
+        self.label.setText(QCoreApplication.translate(
+            "Form", u"\u7b2cN\u7ae0", None))
+        self.label_2.setText(QCoreApplication.translate("Form", u"???", None))
+        self.label_3.setText(
+            QCoreApplication.translate("Form", u"\u5b57", None))
+        self.label_4.setText(QCoreApplication.translate("Form", u"???", None))
+        self.label_5.setText(QCoreApplication.translate(
+            "Form", u"\u4e2a\u5206\u955c", None))
+        self.pushButton.setText(QCoreApplication.translate(
+            "Form", u"\u91cd\u65b0\u5206\u955c", None))

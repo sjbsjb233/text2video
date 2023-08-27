@@ -4,6 +4,7 @@ import os
 import datetime
 import re
 from script import database
+from script.cut_novel import cut_novel as cut_novel_func
 
 
 def create_orginal_table(path):
@@ -124,20 +125,7 @@ def insert_dominate(name: str, cut_novel: bool, cut_re: str, novel_path: str, pr
         novel = f.read()
     # 将小说内容写入original_content表
     if cut_novel:
-        # 读取小说内容
-        # 切割小说(正则表达式为切割标准,cut_re)
-        novel = re.split(cut_re, novel)
-        # 将小说内容写入original_content表
-        conn = sqlite3.connect("%stemperature.db" % path)
-        c = conn.cursor()
-        for i in range(len(novel)):
-            c.execute('''INSERT INTO original_content(chapter,text) VALUES(?,?)''',
-                      (i+1, novel[i]))
-            # 计算进度
-            present.setValue(round(i/len(novel)*100))
-        present.setValue(100)
-        conn.commit()
-        conn.close()
+        cut_novel_func(novel_path, path, present, cut_re)
     else:
         # 将小说内容写入original_content表
         conn = sqlite3.connect("%stemperature.db" % path)

@@ -10,7 +10,7 @@ from script import chatgpt
 '''
 
 
-def cut_novel(path, target_path, regex=r'\s==.+==', delete_str_regex=None):
+def cut_novel(path, target_path, persent: object, regex=r'\s==.+==', delete_str_regex=None):
     '''机械化按章节分割文本'''
     # 检测文件是否存在
     try:
@@ -50,6 +50,9 @@ def cut_novel(path, target_path, regex=r'\s==.+==', delete_str_regex=None):
         database.change_data(
             sql, (chapter_index, chapter_content), '%stemperature.db' % target_path)
         chapter_index += 1
+        # 计算进度
+        persent.setValue(round(chapter_index/len(chapter_list)*100))
+    persent.setValue(100)
     return True
 
 
@@ -87,7 +90,7 @@ def cut_novel_human(text: str, path: str, chapter: int):
             sql, (chapter, chapter_part, chapter_content), '%stemperature.db' % path)
 
 
-def gpt_split(path: str, chapters: list):
+def gpt_split(path: str, chapters: list,persent: object):
     '''ChatGPT分割文本,将任务加入gpt_queue表的队列中
     chapters:需要分割的章节列表'''
     # 检查path结尾是否为/
@@ -165,7 +168,10 @@ def gpt_split(path: str, chapters: list):
                 for i in range(len(completion)):
                     finally_result.append(completion["part"+str(i+1)])
                 break
-            
+            # 计算进度(不精准)
+            persent.setValue(round(len(finally_result)/(len(content_list)*2.5)*100))
+    persent.setValue(100)
+
     return finally_result
 
 

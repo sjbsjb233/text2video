@@ -43,6 +43,12 @@ def init_mainwin(self):
     # 自动刷新队列
     self.refresh_dict['my_one_program'] = []
 
+    #使用QTimer定时器刷新所有项目
+    self.refresh_timer = QtCore.QTimer()
+    self.refresh_timer.timeout.connect(lambda: refresh_all(self))
+    self.refresh_timer.start(800)
+
+
 
 
 def tab_widget_change(self):
