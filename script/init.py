@@ -274,7 +274,8 @@ def get_part_list(path):
 
     return data
 
-def get_original_content(path, chapter):
+
+def get_original_content(path:str, chapter:int)->str:
     '''获取指定章节的原始文本内容'''
     # 判定path是否加上/
     if path[-1] != '/':
@@ -282,6 +283,19 @@ def get_original_content(path, chapter):
     sql = '''SELECT text FROM original_content WHERE chapter=?'''
     data = database.select_data(sql, (chapter,), '%stemperature.db' % path)
     return data[0][0]
+
+
+def get_had_screenshot(path: str) -> list:
+    '''获取已经分镜完成的的章节'''
+    # 判定path是否加上/
+    if path[-1] != '/':
+        path += '/'
+    sql = '''SELECT chapter FROM main GROUP BY chapter'''
+    data = database.select_data(sql, (), '%stemperature.db' % path)
+    # 去除data列表中包含的列表
+    data = [i[0] for i in data]
+    return data
+
 
 if __name__ == '__main__':
     create_orginal_table(r'temp\novel')

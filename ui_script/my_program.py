@@ -119,18 +119,31 @@ class My_one_program():
         # 插图审核按钮事件
         self.pushButton_6.clicked.connect(self.pic_review)
 
+        #加载self.part列表数据
+        self.load_part_list()
+
         # 加载主信息--分镜信息内容
         self.load_part_info()
 
+    def load_screenshot(self):
+        '''加载切分镜的已完成和未完成(初始new_tab时调用)'''
+        # 获取已完成的切分镜
+        done_screenshot = init.get_had_screenshot(self.path)
+        # 加载已完成
+        for i in done_screenshot:
+            part_done=Part_done(self.mainwin, self, i)
+
+
+
     def start_ai_screenshot(self, chapter):
-        '''开始AI分镜按钮点击事件'''
+        '''开始AI分镜按钮点击事件(由未完成-开始按钮事件绑定此函数)'''
         # 禁用按钮
         self.pushButton_20.setEnabled(False)
         self.label_8.setText('AI分镜处理中(等待ChatGPT响应)')
         # 多线程执行AI分镜
         self.ai_screenshot_thread = QThread()
-        self.ai_screenshot_thread.run(lambda: cut_novel.gpt_split(
-            self.path, chapter, self.progressBar_2, self.textEdit))
+        self.ai_screenshot_thread.run = lambda: cut_novel.gpt_split(
+            self.path, chapter, self.progressBar_2, self.textEdit)
         self.ai_screenshot_thread.finished.connect(
             self.ai_screenshot_thread_over)
         self.ai_screenshot_thread.start()
@@ -152,6 +165,13 @@ class My_one_program():
             self.tab_6, '添加章节', '请输入章节内容:')
         if ok:
             pass
+    def load_part_list(self):
+        '''加载分镜信息内容(用于加载self.part列表数据)'''
+
+        part_list = init.get_part_list(self.path)
+        for i in part_list:
+            #向列表中加入7个None
+            self.part[(i[1], i[2])] = [None for i in range(7)]
 
     def load_part_info(self):
         '''加载主信息--分镜信息内容'''
@@ -170,9 +190,9 @@ class My_one_program():
         part_list = init.get_part_list(self.path)
         for i in part_list:
             state, persent = init.get_state(self.path, i[0])
-            self.part[(i[1], i[2])] = Part_info(self.mainwin, self, i[1], i[2])
-            self.part[(i[1], i[2])].label_4.setText(state)
-            self.part[(i[1], i[2])].progressBar.setValue(persent)
+            self.part[(i[1], i[2])][0] = Part_info(self.mainwin, self, i[1], i[2])
+            self.part[(i[1], i[2])][0].label_4.setText(state)
+            self.part[(i[1], i[2])][0].progressBar.setValue(persent)
 
     def loro_figure(self):
         '''人物固定按钮点击事件'''
@@ -1066,7 +1086,7 @@ class Part_info(QFrame):
         self.label_4.setText(QCoreApplication.translate("Form", u"???", None))
 
 
-class part_undone(QFrame):
+class Part_undone(QFrame):
     '''切分镜--未完成'''
 
     def init_other(self):
@@ -1075,11 +1095,12 @@ class part_undone(QFrame):
 
     def create_part(self):
         '''创建分镜,开始按钮点击事件'''
-        #确认AI分镜是否启动
+        # 确认AI分镜是否启动
         if self.my_one_program.if_ai_screenshot:
             # 将页面切换到index=2
             self.my_one_program.tabWidget_3.setCurrentIndex(2)
-            QMessageBox.information(self, '提示', 'AI智能分镜已经在运行中,请等待上个AI智能分镜结束后才能进行新的分镜任务', QMessageBox.Ok)
+            QMessageBox.information(
+                self, '提示', 'AI智能分镜已经在运行中,请等待上个AI智能分镜结束后才能进行新的分镜任务', QMessageBox.Ok)
             return
         # 将页面切换到index=2
         self.my_one_program.tabWidget_3.setCurrentIndex(2)
@@ -1087,8 +1108,9 @@ class part_undone(QFrame):
         self.my_one_program.pushButton_20.clicked.connect(
             lambda: self.my_one_program.start_ai_screenshot(self.chapter))
 
-        origin_text = init.get_original_content(self.my_one_program.path, self.chapter)
-        #人工分镜中显示原文内容
+        origin_text = init.get_original_content(
+            self.my_one_program.path, self.chapter)
+        # 人工分镜中显示原文内容
         self.my_one_program.textEdit_2.setPlainText(origin_text)
 
     def __init__(self, mainwin: object, my_one_program: object, chapter: int):
@@ -1137,8 +1159,13 @@ class part_undone(QFrame):
             "Form", u"\u5f00\u59cb", None))
 
 
-class part_done(QFrame):
+class Part_done(QFrame):
     '''切分镜--已完成'''
+
+    def init_other(self):
+        '''初始化其他'''
+        #获取章节字数
+        chapter_word_num = len(init.get_original_content(self.my_one_program.path,self.chapter))
 
     def __init__(self, mainwin: object, my_one_program: object, chapter: int):
         self.mainwin = mainwin
@@ -1187,8 +1214,7 @@ class part_done(QFrame):
 
         self.horizontalLayout.addWidget(self.pushButton)
 
-        self.label.setText(QCoreApplication.translate(
-            "Form", u"\u7b2cN\u7ae0", None))
+        self.label.setText('第%s章' % self.chapter)
         self.label_2.setText(QCoreApplication.translate("Form", u"???", None))
         self.label_3.setText(
             QCoreApplication.translate("Form", u"\u5b57", None))
