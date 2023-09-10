@@ -173,7 +173,7 @@ def gpt_split(path: str, chapters: list, persent: object, textEdit: object):
             count += 1
             persent.setValue(round(count/len(content_list)*100))
 
-            #将内容预显示到textEdit中
+            # 将内容预显示到textEdit中
             textEdit.setPlainText("\n".join(finally_result))
     persent.setValue(100)
     textEdit.setPlainText("\n".join(finally_result))

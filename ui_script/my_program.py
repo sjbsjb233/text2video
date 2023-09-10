@@ -119,21 +119,48 @@ class My_one_program():
         # 插图审核按钮事件
         self.pushButton_6.clicked.connect(self.pic_review)
 
-        #加载self.part列表数据
+        # 加载self.part列表数据
         self.load_part_list()
 
         # 加载主信息--分镜信息内容
         self.load_part_info()
 
+        # 加载切分镜的已完成和未完成
+        self.load_screenshot()
+
     def load_screenshot(self):
-        '''加载切分镜的已完成和未完成(初始new_tab时调用)'''
+        '''加载切分镜的已完成和未完成(初始或任务完成重载new_tab时调用)'''
+
+        # 清除任务
+        # 清除self.part文件中关于切分镜的信息
+        for i in self.part.values():
+            i[1] = None
+            i[2] = None
+        # 清除verticalLayout_23和verticalLayout_22中的所有控件
+        for i in range(self.verticalLayout_23.count()):
+            self.verticalLayout_23.itemAt(i).widget().deleteLater()
+        for i in range(self.verticalLayout_22.count()):
+            self.verticalLayout_22.itemAt(i).widget().deleteLater()
+
         # 获取已完成的切分镜
         done_screenshot = init.get_had_screenshot(self.path)
         # 加载已完成
         for i in done_screenshot:
-            part_done=Part_done(self.mainwin, self, i)
+            part_done = Part_done(self.mainwin, self, i)
+            # 将part_done添加到part中
+            self.part[(i, -1)][1] = part_done
 
-
+        # 加载未完成
+        # 获取总共的章节数量
+        chapter_num = init.get_chapter_num(self.path)
+        # 计算未完成的章节
+        not_done_chapter = [i for i in range(
+            1, chapter_num+1) if i not in [j for j in done_screenshot]]
+        # 加载未完成
+        for i in not_done_chapter:
+            part_not_done = Part_undone(self.mainwin, self, i)
+            # 将part_not_done添加到part中
+            self.part[(i, -1)][2] = part_not_done
 
     def start_ai_screenshot(self, chapter):
         '''开始AI分镜按钮点击事件(由未完成-开始按钮事件绑定此函数)'''
@@ -148,6 +175,25 @@ class My_one_program():
             self.ai_screenshot_thread_over)
         self.ai_screenshot_thread.start()
         self.if_start_ai_screenshot = True
+
+    def submit_human_screenshot(self, chapter: int, text: str):
+        '''提交人工审核按钮点击事件(由未完成-提交按钮事件绑定此函数)'''
+        cut_novel.cut_novel_human(text, self.path, chapter)
+        # 清空textEdit_2内容
+        self.textEdit_2.setText('')
+        # 切换到切分镜-已完成页面
+        self.tabWidget_5.setCurrentIndex(1)
+        # 重新载入已完成和未完成
+        self.load_screenshot()
+
+    def submit_ai_screenshot(self, chapter: int):
+        '''提交AI分镜按钮点击事件(由切分镜-创建分镜页-提交按钮事件绑定此函数)'''
+        cut_novel.cut_novel_human(
+            self.textEdit.toPlainText(), self.path, chapter)
+        # 切换到切分镜-已完成页面
+        self.tabWidget_5.setCurrentIndex(1)
+        # 重新载入已完成和未完成
+        self.load_screenshot()
 
     def ai_screenshot_thread_over(self):
         '''AI分镜线程结束后执行'''
@@ -165,12 +211,14 @@ class My_one_program():
             self.tab_6, '添加章节', '请输入章节内容:')
         if ok:
             pass
+        # ???
+
     def load_part_list(self):
         '''加载分镜信息内容(用于加载self.part列表数据)'''
 
         part_list = init.get_part_list(self.path)
         for i in part_list:
-            #向列表中加入7个None
+            # 向列表中加入7个None
             self.part[(i[1], i[2])] = [None for i in range(7)]
 
     def load_part_info(self):
@@ -190,7 +238,8 @@ class My_one_program():
         part_list = init.get_part_list(self.path)
         for i in part_list:
             state, persent = init.get_state(self.path, i[0])
-            self.part[(i[1], i[2])][0] = Part_info(self.mainwin, self, i[1], i[2])
+            self.part[(i[1], i[2])][0] = Part_info(
+                self.mainwin, self, i[1], i[2])
             self.part[(i[1], i[2])][0].label_4.setText(state)
             self.part[(i[1], i[2])][0].progressBar.setValue(persent)
 
@@ -1093,6 +1142,12 @@ class Part_undone(QFrame):
         '''初始化其他'''
         self.pushButton.clicked.connect(self.create_part)
 
+        # 获取章节字数
+        chapter_word_num = len(init.get_original_content(
+            self.my_one_program.path, self.chapter))
+        # 显示到label上
+        self.label_2.setText(str(chapter_word_num))
+
     def create_part(self):
         '''创建分镜,开始按钮点击事件'''
         # 确认AI分镜是否启动
@@ -1107,11 +1162,17 @@ class Part_undone(QFrame):
         # 设置AI分镜开始按钮点击事件
         self.my_one_program.pushButton_20.clicked.connect(
             lambda: self.my_one_program.start_ai_screenshot(self.chapter))
+        # 设置AI分镜提交按钮点击事件
+        self.my_one_program.pushButton_21.clicked.connect(
+            lambda: self.my_one_program.submit_ai_screenshot(self.chapter))
 
         origin_text = init.get_original_content(
             self.my_one_program.path, self.chapter)
         # 人工分镜中显示原文内容
         self.my_one_program.textEdit_2.setPlainText(origin_text)
+        # 人工分镜提交按钮点击
+        self.my_one_program.pushButton_22.clicked.connect(
+            lambda: self.my_one_program.submit_human_screenshot(self.chapter, origin_text))
 
     def __init__(self, mainwin: object, my_one_program: object, chapter: int):
         self.mainwin = mainwin
@@ -1150,8 +1211,7 @@ class Part_undone(QFrame):
 
         self.horizontalLayout.addWidget(self.pushButton)
 
-        self.label.setText(QCoreApplication.translate(
-            "Form", u"\u7b2cN\u7ae0", None))
+        self.label.setText('第%s章' % self.chapter)
         self.label_2.setText(QCoreApplication.translate("Form", u"???", None))
         self.label_3.setText(
             QCoreApplication.translate("Form", u"\u5b57", None))
@@ -1164,8 +1224,21 @@ class Part_done(QFrame):
 
     def init_other(self):
         '''初始化其他'''
-        #获取章节字数
-        chapter_word_num = len(init.get_original_content(self.my_one_program.path,self.chapter))
+        # 获取章节字数
+        chapter_word_num = len(init.get_original_content(
+            self.my_one_program.path, self.chapter))
+        # 统计分镜个数
+        screenshot_num = init.get_screenshot_count(
+            self.my_one_program.path, self.chapter)
+        # 显示到label上
+        self.label_2.setText(str(chapter_word_num))
+        self.label_4.setText(str(screenshot_num))
+
+        # 重新分镜按钮点击
+        self.pushButton.clicked.connect(self.recreate_part)
+
+    def recreate_part(self):
+        '''重新分镜按钮点击事件'''
 
     def __init__(self, mainwin: object, my_one_program: object, chapter: int):
         self.mainwin = mainwin
